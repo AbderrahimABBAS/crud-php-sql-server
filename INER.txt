@@ -1,0 +1,76 @@
+remise1SC
+
+remise1UD
+
+remise1UD.php
+
+remise2USC
+/////////////////
+remiseB.php
+
+remiseSC.php
+///////////
+remiseSAI
+remiseBD
+
+remise1SAI
+
+remise2USC
+
+remise2USAI
+
+
+07 98 95 57 23 (viber)
+07 91 52 51 40 (WhatsApp)
+
+///////////////
+SELECT * FROM `table1`
+INTERSECT
+SELECT * FROM `table2`
+::::::::::
+SELECT * FROM tbl_ListeVoitureA WHERE fld_couleurA NOT IN(
+SELECT fld_couleurB FROM tbl_ListeVoitureB;
+);
+;::::::::::::::::::::
+
+SELECT nom, prénom
+FROM Table1
+WHERE Table1.nom IN (SELECT nom FROM Table2) AND Table1.prénom IN (SELECT prénom FROM Table2);
+////////////
+
+SELECT DISTINCT Table1.nom, Table1.prénom
+FROM Table1, Table2
+WHERE Table1.nom=Table2.nom AND Table1.prénom=Table2.prénom;
+////////////
+SELECT Table1.nom, Table1.prénom
+FROM Table1 INNER JOIN Table2 ON Table1.nom = Table2.nom AND Table1.prénom = Table2.prénom
+WHERE Table2.nom Is Not Null AND Table2.prénom Is Not Null;
+/////////////////// a voir
+SELECT nom, prénom
+FROM Table1
+WHERE Table1.nom NOT IN (SELECT nom FROM Table2) AND Table1.prénom NOT IN (SELECT prénom FROM Table2);
+///////////////
+
+SELECT *
+FROM employees
+WHERE NOT EXISTS (SELECT *
+                  FROM contacts
+                  WHERE employees.last_name = contacts.last_name
+                  AND employees.first_name = contacts.first_name);
+//////////////
+code_centre/code_dr_interne/num_lot/num_boite/
+//////////////////////
+SELECT  *  
+FROM Table1 t1 
+WHERE NOT EXISTS (
+    SELECT * 
+    FROM Table2 t2 
+    WHERE t1.MAKE = t2.MAKE
+    AND   t1.MODEL = t2.MODEL
+    AND   t1.[Serial Number] = t2.[serial number]);
+////////////////////////
+
+SELECT * FROM A WHERE NOT EXISTS( SELECT * FROM b WHERE b.col=a.col )
+
+////////////////////
+Syntaxe incorrecte vers le mot cle 'WHERE'.

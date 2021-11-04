@@ -1,0 +1,80 @@
+SELECT TOP (1000) [code_centre]
+      ,[code_dr_interne]
+      ,[num_lot]
+      ,[num_boite]
+      ,[nb_contrat_recu]
+  FROM [suivis_mobilis1].[dbo].[detail_lot]
+
+<a href="edit.php?id=<?= $produit['id'] ?>">Modifier</a>
+///////////////
+<?php
+    $tsql = "UPDATE [MRS].[dbo].[REQUISITION] A
+             INNER JOIN [MRS].[dbo].[STOCK] B
+             ON B.StockId = A.StockId 
+             SET A.RequestStatus = 'APPROVED', 
+                 A.ApprovedDate = CONVERT(VARCHAR(10),
+                 GETDATE(),103), 
+                 B.StockQuantity = B.StockQuantity - A.RequestQuantity
+             WHERE RequestId = '$_GET[RequestId]'";
+
+    $result = sqlsrv_query($conn, $tsql, array(), 
+              array ("Scrollable" => SQLSRV_CURSOR_KEYSET));    
+
+    header('Location:approval.php');
+ ?>
+
+////////////
+Begin TRAN
+
+UPDATE A
+SET    A.RequestStatus = 'APPROVED',
+       A.ApprovedDate = CONVERT(VARCHAR(10), Getdate(), 103)
+FROM   [MRS].[dbo].[REQUISITION] A
+       INNER JOIN [MRS].[dbo].[STOCK] B
+               ON B.StockId = A.StockId
+ WHERE RequestId = $_GET[RequestId]
+
+UPDATE B
+SET    B.StockQuantity = B.StockQuantity - A.RequestQuantity
+FROM   [MRS].[dbo].[REQUISITION] A
+       INNER JOIN [MRS].[dbo].[STOCK] B
+               ON B.StockId = A.StockId
+ WHERE RequestId = $_GET[RequestId]
+
+COMMIT
+////////////////
+
+echo '<script language="javascript" type=\'text/javascript\'>setTimeout("window.location=\'www.google.fr\'",temps_en_millisecondes);</script>';
+
+exeple:
+
+echo '<script language="javascript" type=\'text/javascript\'>setTimeout("window.location=\'www.google.fr\'",3605000);</script>';
+////////////////////////////////////
+
+<script language="javascript" type='text/javascript'>
+    function session(){
+        window.location="valide_dec.php"; //page de déconnexion
+    }
+    setTimeout("session()",300000); //ça fait bien 5min??? c'est pour le test
+</script>
+
+//////la page: valide_dec.php
+//détruit toutes les variables de SESSION
+unset($_SESSION['login']);
+unset($_SESSION['prenom']);
+unset($_SESSION['niv']);
+unset($_SESSION['id_user']);
+///
+ou on met  le code suivant ds valide_dec.php
+<?php
+session_start();
+session_unset();
+session_destroy();
+?>
+/////////////////////////////////////////////////////
+var x = setTimeout(mafonction, 5000); 
+...
+clearTimeout(x); 
+////////////////////////////////
+ sleep(10);
+////////////////////

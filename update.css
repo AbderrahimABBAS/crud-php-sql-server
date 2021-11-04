@@ -1,0 +1,31 @@
+label {
+  display: block;
+  padding-top: 10px;
+  font-size 22px;
+  font-family: Arial, serif;
+  color: grey;
+}
+
+input {
+  border: 1px solid grey;
+  padding: 6px;
+  border-radius: 50px;
+  color: grey;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+button {
+  display: block;
+  margin-top: 10px;
+  font-size 22px;
+  font-family: Arial, serif;
+  color: grey;
+  padding: 8px 20px;
+  border: 10px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+h4 {
+  margin: 0;
+}

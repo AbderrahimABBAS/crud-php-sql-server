@@ -1,0 +1,65 @@
+%7B$_SERVER['PHP_SELF']%7D?page=2
+
+
+OFFSET 0 ROWS 
+FETCH FIRST 10 ROWS ONLY;
+
+SELECT email FROM emailTable 
+WHERE user_id=3
+ORDER BY Id
+OFFSET 10 ROWS
+FETCH NEXT 10 ROWS ONLY;
+///////
+
+SELECT CustomerID, CompanyName FROM Customers
+ORDER BY CompanyName
+OFFSET 0 ROWS
+FETCH NEXT 10 ROWS ONLY
+
+
+begin
+    with My_CTE  as
+    (
+         SELECT col1,
+              ROW_NUMBER() OVER(ORDER BY col1) AS row_number
+     FROM
+          My_Table
+     WHERE
+          <<<whatever>>>
+    )
+    select * from My_CTE
+            WHERE RowNum BETWEEN (@PageNum - 1) * (@PageSize + 1) 
+                              AND @PageNum * @PageSize
+
+end
+
+////////////////////////////////
+declare @limit int 
+declare @offset int 
+set @offset = 2;
+set @limit = 20;
+declare @count int
+declare @idxini int 
+declare @idxfim int 
+select @idxfim = @offset * @limit
+select @idxini = @idxfim - (@limit-1);
+WITH paging AS
+    (
+        SELECT 
+             ROW_NUMBER() OVER (order by object_id) AS rowid, *
+        FROM 
+            sys.objects 
+    )
+select *
+    from 
+        (select COUNT(1) as rowqtd from paging) qtd, 
+            paging 
+    where 
+        rowid between @idxini and @idxfim
+    order by 
+        rowid;
+////////////////
+SELECT *
+FROM sys.objects
+ORDER BY object_id
+OFFSET 40 ROWS FETCH NEXT 10 ROWS ONLY

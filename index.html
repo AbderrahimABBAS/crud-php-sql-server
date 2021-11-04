@@ -1,0 +1,64 @@
+<?php
+  session_start();
+  // Redirect the user to login page if he is not logged in.
+  if(!isset($_SESSION['loggedIn'])){
+    header('Location: login.php');
+    exit();
+  }
+  require_once('inc/config/constants.php');
+  require_once('inc/config/db.php');
+  require_once('inc/header.html');
+?>
+  <body>
+<?php
+  require 'inc/navigation.php';
+?>
+<link rel="stylesheet" type="text/css" href="index.css"  />
+<div class="cards-list">
+  
+<div class="card 1">
+  <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+  <div class="card_title title-white">
+    <p>Card Title</p>
+  </div>
+</div>
+
+  <div class="card 2">
+  <div class="card_image">
+    <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
+    </div>
+  <div class="card_title title-white">
+    <p>Card Title</p>
+  </div>
+</div>
+
+<div class="card 3">
+  <div class="card_image">
+    <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+  </div>
+  <div class="card_title">
+    <p>Card Title</p>
+  </div>
+</div>
+  
+  <div class="card 4">
+  <div class="card_image">
+    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+    </div>
+  <div class="card_title title-black">
+    <p>Card Title</p>
+  </div>
+  </div>
+
+  <div class="card 5">
+  <div class="card_image">
+    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+    </div>
+  <div class="card_title title-black">
+    <p>Card Title</p>
+  </div>
+  </div>
+
+</div>
+
+</body>

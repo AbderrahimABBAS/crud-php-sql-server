@@ -1,0 +1,99 @@
+
+<script src="filterTable.js"></script>
+
+<link rel="stylesheet" href="filterTable.css" />
+
+
+<!-- <div style="display:flex;">
+      <table style="width: 20rem;">
+        <thead>
+          <tr>
+            <th colspan="2">Manufacturer</th>
+          </tr>
+        </thead>
+        <tbody id="filterTableOne">
+
+        </tbody>
+      </table>
+
+      <table style="width:20em;">
+        <thead>
+          <tr>
+            <th colspan="2">Color</th>
+          </tr>
+        </thead>
+        <tbody id="filterTableTwo">
+
+        </tbody>
+      </table>
+
+      <table style="width:20em;">
+        <thead>
+          <tr>
+            <th colspan="2">Material</th>
+          </tr>
+        </thead>
+        <tbody id="filterTableThree">
+
+        </tbody>
+      </table>
+    </div> -->
+    <input type="text" onkeyup="searchProducts()" placeholder="Search...." style="height:2em; width:20em; margin:1em;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Manufacturer</th>
+          <th>Storage status</th>
+        </tr>
+      </thead>
+      <tbody id="productTable">
+      <?php while($row = $req->fetch()) : ?>
+     <tr>
+       <td><?php echo htmlspecialchars($row['id']); ?></td>
+       <td><?php echo htmlspecialchars($row['name']); ?></td>
+     </tr>
+     <?php endwhile; ?>
+      </tbody>
+    </table>
+
+
+  <!--   <!DOCTYPE html>
+<html>
+<head>Afficher la table users</head>
+<body>
+ <h1>Liste des utilisateurs</h1>
+ <table>
+   <thead>
+     <tr>
+       <th>ID</th>
+       <th>Name</th>
+     </tr>
+   </thead>
+   <tbody>
+     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+     <tr>
+       <td><?php echo htmlspecialchars($row['id']); ?></td>
+       <td><?php echo htmlspecialchars($row['name']); ?></td>
+     </tr>
+     <?php endwhile; ?>
+   </tbody>
+ </table>
+</body>
+</html> -->
+<!-- //////////////////////
+<? while($row = $req->fetch()) { ?>
+        <td><? echo $row['id']; ?></td>
+        <td><? echo $row['username']; ?></td>
+ 
+        <td><? echo $row['prenom']; ?></td>
+        <td><? echo $row['nom']; ?></td>
+    <td><? if ($row['verified'] == "0") { echo 'Membre'; } if ($row['verified'] == "1") { echo '<p class="text-warning"><strong>Modérateur</strong></p>'; } if ($row['verified'] == "2") { echo '<p class="text-error"><strong>Administrateur</strong></p>'; } ?></td>
+    <td><? echo '<a class="btn btn-info" href="profil?user='.$row['username'].'">Voir le profil</a><br/>'; ?></td>
+     
+ 
+ 
+ 
+</tr>
+<? }    -->

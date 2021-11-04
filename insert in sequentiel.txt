@@ -1,0 +1,150 @@
+SELECT a.reference_article, f.code_famille, f.detail, m.reference_maison
+FROM article AS a
+INNER JOIN famille AS f
+    ON f.code_famille = a.code_famille
+INNER JOIN maison AS m
+    ON m.reference_article = a.reference_article
+LIMIT 0, 20
+ORDER BY a.reference_article
+
+
+INNER JOIN
+
+SELECT j.nom nom_jeu, p.prenom prenom_proprietaire
+FROM proprietaires p
+INNER JOIN jeux_video j
+ON j.ID_proprietaire = p.ID
+/////////////////
+SELECT * 
+FROM A
+INNER JOIN B 
+    ON A.a = B.b
+//////////////
+
+
+SELECT TOP (1000) [code_centre]
+      ,[code_dr_interne]
+      ,[num_lot]
+      ,[num_boite]
+      ,[nb_contrat_recu]
+  FROM [suivis_mobilis1].[dbo].[detail_lot]
+
+/////
+INSERT INTO user (id, name, username, opted_in)
+  SELECT id, name, username, opted_in 
+  FROM user LEFT JOIN user_permission AS userPerm ON user.id = userPerm.user_id
+
+/////////////////////
+I have 2 tables, product, client
+
+I wanna insert in my product table rows according to the number of rows of my client table :
+
+INSERT INTO product (
+    id,
+    NAME,
+    client_id
+)
+SELECT (
+    productSequence.nextval,
+    'myProd',
+    SELECT client_id FROM client
+);
+
+This query is wrong, cause select client_id from client returns more than one row!
+
+I can't find how to do that
+/////////
+insert into product(id, name, client_id) 
+select productSequence.nextval, 'myProd', client_id from client
+////////
+insert into product(name, client_id) 
+select 'myProd', client_id from client
+//////
+INSERT INTO ComptesFidelite ( Adresse, etc. )
+VALUES ( 'adresse', etc. );
+ 
+INSERT INTO Client ( nom, prenom, ID_Compte )
+VALUES ( 'nom', 'prenom', LAST_INSERT_ID() );
+
+//////////
+tu dois utiliser la fonction mysql_insert_id() pour récupérer l'id automatique du dernier enregistrement ajouté. ensuite tu utilise ce numero pour l'insertion dans la deuxieme table.
+/////////////////
+"INSERT INTO photo
+(id_photo,id_bou,lien)
+ VALUES
+ ('',(SELECT id_boutique FROM boutique WHERE id_boutique='".$donnees['id_boutique']."'),'".$LienImage."')";
+////////////////////////////
+
+INSERT INTO Persons (FirstName) VALUES ('Joe'); SELECT ID AS LastID FROM Persons WHERE ID = @@Identity; You can use query like this inside stored procedure or as an ad-hoc query.
+//////////////
+SCOPE_IDENTITY() 
+//////////
+IDENT_CURRENT( 'table_or_view' ) 
+////
+SELECT IDENT_CURRENT('[dbo].[MyTable]') AS LGIV
+
+if ($element === end($array))
+        echo 'LAST ELEMENT!';
+/////////
+<?php
+ 
+// Tout le tableau retourné par la requête est injecté dans $donnees.
+$donnees = $req->fetchAll();
+ 
+// Pour chaque enregistrement du tableau
+foreach($donnees as $donnee)
+{
+    // Si c'est le dernier tour du foreach on ajoute une classe collapse
+    $classPlus = ($donnee === end($donnees) ) ? ' collapse in' : '';
+?>
+    <!-- Code Html -->
+    <div class="panel-collapse<?= $classPlus ?>">
+        <span><?= $donnee['truc'] ?></span>
+        <span><?= $donnee['machin'] ?></span>
+    </div>
+<?php
+}
+?>
+///////////////
+
+sqlsrv-num-rows
+tab_Clients.length
+///////////
+select * 
+into table1 
+from table2 
+where 1=1 
+///////
+INSERT INTO newTable
+SELECT * FROM oldTable
+///////////
+INSERT INTO newTable (col1, col2, col3)
+SELECT column1, column2, column3
+FROM oldTable
+////////////
+INSERT INTO table1 (col1, col2, col3)
+SELECT column1, column2, column3
+FROM table2   
+//////////
+UPDATE table1
+SET table1.column = table2.expression1
+FROM table1
+INNER JOIN table2
+ON (table1.column1 = table2.column1)
+[WHERE conditions];
+////////
+// Récupère la recherche
+     $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
+
+     // la requete mysql
+     $q = $conn->query(
+     "SELECT champ1, champ2 FROM votretable
+      WHERE champ1 LIKE '%$recherche%'
+      OR champ2 LIKE '%$recherche%'
+      LIMIT 10");
+
+     // affichage du résultat
+     while( $r = mysqli_fetch_array($q)){
+     echo 'Résultat de la recherche: '.$r['champ1'].', '.$r['champ2'].' <br />'
+;
+     }

@@ -1,0 +1,3 @@
+pagination 
+
+https://www.myprogrammingtutorials.com/create-pagination-with-php-and-mysql.html

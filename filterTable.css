@@ -1,0 +1,26 @@
+body{
+  margin:0;
+}
+table{
+/*float: right;*/
+  border: 1px solid black;
+  text-align:center;
+}
+th{
+  border: 1px solid black;
+}
+td{
+  padding:1em;
+}
+tr:nth-child(odd){
+  background-color:lightgrey;
+}
+
+.storage-status-box{
+  height:2.5em;
+  width:2.5em;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+/*float:right; float: none;*/

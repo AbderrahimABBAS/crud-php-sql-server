@@ -1,0 +1,88 @@
+sqlsrv_fetch_array
+
+end()
+
+SELECT * FROM tableau 
+WHERE id='Mat2'
+ORDER BY valeur Desc
+LIMIT 0,1
+
+LAST_VALUE
+
+max(valeur)
+
+SELECT ID, max(valeur) As valeur, periode
+FROM test
+GROUP BY ID;
+
+[b][i]
+select * from ma_table where rownum >= all
+(
+select * from ma_table order by rownum asc
+);
+
+
+Max(Id)
+
+where Id = @@identity
+///////
+$r = @sqlsrv_query($dbcMssql, $q, array(), array("Scrollable"=>"static"));    // works
+$rowCount = sqlsrv_num_rows($r);    // this shows there are correct number of rows
+$row = sqlsrv_fetch_array($r, SQLSRV_FETCH_ASSOC);    // $row is FALSE
+
+/////////
+$row_count = sqlsrv_num_rows($stmt);
+echo "Total rows: ".$row_count."<br/>"; 
+//////
+while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+
+    // Increase the processed row count
+    $i++;
+}
+
+echo $i; 
+////////////
+$sql="select count(id) as total from tbl_test WHERE sex='femele'";
+$result=mysqli_query($con,$sql)
+$values=$mysqli_fetch_assoc($result);
+$num_rows=$values['total'];
+echo $num_rows
+///////
+mysql_query("UPDATE client_info SET nom_client='" . $nom_client . "', prenom_client='" . $prenom_client . "'
+                , adresse_client='" . $adresse_client . "', code_postal_client='" . $code_postal_client . "', ville_client='" . $ville_client . "'
+                , tel_fixe_client='" . $tel_fixe_client . "', tel_portable_client='" . $tel_portable_client . "', email_client='" . $email_client . "' WHERE id_client=LAST_INSERT_ID()");
+///////////////
+
+$resultat = mysql_query("SELECT MAX(id_client) AS idClient FROM client_info");
+$donnees = mysql_fetch_array($resultat);
+$max = $donnees['idClient'];
+//////////////
+select * from ma_table where rownum >= all
+(
+select * from ma_table order by rownum asc
+);
+///////////
+select *
+    from (
+        select field1, field2
+        from table
+    ) as R
+//////////php get last row in database
+SELECT fields FROM table ORDER BY id DESC LIMIT 1;
+/////////////
+SELECT LAST (column_name) AS LAST_CUSTOMER FROM table_name;
+////////
+SELECT TOP 1 column_name FROM table_name
+ORDER BY column_name DESC;
+///////
+'$itemName','$discount','$quantity'
+
+
+$itemNumber  itemDetailsItemName1  code_centre
+$itemName    itemDetailsDiscount   num boite
+$discount    itemDetailsQuantity   nb contrat recu
+
+<a href="edit.php?id=<?= $produit['id'] ?>">Modifier</a>
+///////////////////
+$insertItemSql=  "INSERT INTO dbo.[detail_lot]([code_centre],[code_dr_interne], [num_lot], [num_boite],[nb_contrat_recu])
+                                           VALUES('$itemNumber','$i','$j', '$itemName','$discount')";
